@@ -12,7 +12,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Host
 import { merge, Observable, of, Subject } from 'rxjs';
 import { PROPOSAL_FILTER, PROPOSAL_PROVIDER, PROPOSAL_SELECTION, ProposalKey } from '../proposal-field.constants';
 import { first, map, switchMap, tap } from 'rxjs/operators';
-import { Dimension, ViewportComponent } from '@scion/workbench';
+import { SciDimension, SciViewportComponent } from '@scion/workbench';
 import { MatListItem } from '@angular/material';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ProposalProvider } from '../proposal-provider';
@@ -39,13 +39,12 @@ export class ProposalFieldPopupComponent implements OnDestroy {
   public proposalKeys$: Observable<ProposalKey[]>;
 
   public info: SafeHtml;
-  public overflowAuto = false;
 
   @ViewChildren(MatListItem, {read: ElementRef})
   public proposalListItems: QueryList<ElementRef>;
 
-  @ViewChild(ViewportComponent)
-  public viewport: ViewportComponent;
+  @ViewChild(SciViewportComponent)
+  public viewport: SciViewportComponent;
 
   @ViewChild('default_proposal_template')
   public defaultProposalTemplate: TemplateRef<ProposalKey>;
@@ -186,7 +185,7 @@ export class ProposalFieldPopupComponent implements OnDestroy {
     return it;
   };
 
-  public onProposalListDimensionChange(dimension: Dimension): void {
+  public onProposalListDimensionChange(dimension: SciDimension): void {
     this.height = Math.min(dimension.offsetHeight, ProposalFieldPopupComponent.MAX_HEIGHT_PX);
 
     const animation = this._animationBuilder.build([
@@ -209,12 +208,10 @@ export class ProposalFieldPopupComponent implements OnDestroy {
       .subscribe(() => animation.destroy());
 
     animation.onStart(() => {
-      this.overflowAuto = false;
       this._cd.markForCheck();
     });
 
     animation.onDone(() => {
-      this.overflowAuto = true;
       this._cd.markForCheck();
       done$.next();
     });

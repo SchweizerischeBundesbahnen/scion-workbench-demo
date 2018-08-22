@@ -15,7 +15,7 @@ import { distinctUntilChanged, map, switchMap, takeUntil, tap } from 'rxjs/opera
 import { noop, Observable, of, Subject } from 'rxjs/';
 import { Person } from '../model/person.model';
 import { PersonService } from '../service/person.service';
-import { Dimension, WbBeforeDestroy, WorkbenchRouter, WorkbenchView } from '@scion/workbench';
+import {SciDimension, WbBeforeDestroy, WorkbenchRouter, WorkbenchView } from '@scion/workbench';
 import { FormDataBinding } from '../widget/form/form-data-binding';
 import { FormComponent } from '../widget/form/app-form.component';
 import { FormHandler } from '../widget/form/form-handler';
@@ -35,7 +35,7 @@ export class PersonComponent implements FormDataBinding, WbBeforeDestroy, OnDest
   public person: Person;
   public photography: string;
   public friendIds: number[] = [];
-  private _dimension: Dimension;
+  private _dimension: SciDimension;
   private _modify: boolean;
 
   public form: FormGroup;
@@ -153,7 +153,7 @@ export class PersonComponent implements FormDataBinding, WbBeforeDestroy, OnDest
     this.person.friends = this.friendIds;
   }
 
-  public onDimensionChange(dimension: Dimension): void {
+  public onDimensionChange(dimension: SciDimension): void {
     this._dimension = dimension;
   }
 

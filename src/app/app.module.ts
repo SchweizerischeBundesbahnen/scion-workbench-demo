@@ -12,7 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WorkbenchModule } from '@scion/workbench';
+import { SciDimensionModule, SciViewportModule, WorkbenchModule } from '@scion/workbench';
 import { MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -58,6 +58,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
     AppRoutingModule,
     WidgetModule,
     WorkbenchModule.forRoot(),
+    SciViewportModule,
+    SciDimensionModule,
     MatIconModule,
     MatListModule,
     MatIconModule,

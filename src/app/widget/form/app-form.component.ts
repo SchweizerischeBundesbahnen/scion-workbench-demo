@@ -19,7 +19,10 @@ import { FormMode } from './form-mode';
 import { once } from './operators';
 
 /**
- * Component which provides a consistent way for working with a form in a {WorkbenchView}.
+ * Component which provides a consistent way for working with a form in a workbench view.
+ *
+ * This component's `<ng-content`> is put into a viewport with scrollbars displayed if not enough space available.
+ * CSS flexbox layout with flex-flow 'column nowrap' is applied to the form's viewport with `<ng-content>` as its flex item(s).
  *
  * It uses {FormHandler} for loading and storing data, and {FormDataBinding} for
  * synchronizing {FormControl} with its model.

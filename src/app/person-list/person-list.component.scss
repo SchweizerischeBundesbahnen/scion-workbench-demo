@@ -1,5 +1,4 @@
 :host {
-  height: 100%;
   display: flex;
   flex-direction: column;
   padding: .5em;
@@ -8,12 +7,7 @@
     flex: none;
   }
 
-  > wb-viewport {
+  > sci-viewport {
     flex: auto;
-
-    ::ng-deep .viewport-client {
-      display: block;
-      width: 100%;
-    }
   }
 }

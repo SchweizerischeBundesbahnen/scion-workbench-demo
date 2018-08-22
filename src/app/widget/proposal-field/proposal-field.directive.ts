@@ -202,7 +202,7 @@ export class ProposalFieldDirective implements ControlValueAccessor, OnDestroy {
       panelClass: ['proposals'],
       width: (this.getConnectedOverlayOrigin().nativeElement as HTMLElement).offsetWidth,
       positionStrategy: positionStrategy,
-      scrollStrategy: this._overlay.scrollStrategies.close()
+      scrollStrategy: this._overlay.scrollStrategies.reposition()
     }));
 
     // Prepare the popup input

@@ -1,9 +1,13 @@
 @import '../theme';
 
+$gap: 1.5em;
+
 :host {
-  $gap: 1.5em;
+  display: block;
 
   > app-form form {
+    flex: auto;
+
     display: grid;
     grid-template-columns: minmax(350px, 400px) minmax(350px, 400px);
     grid-column-gap: $gap;

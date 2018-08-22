@@ -37,21 +37,18 @@
 }
 
 :host {
-  position: relative; // positioning anchor
   display: flex;
   flex-direction: column;
   height: 100%;
 
-  > wb-viewport.form {
+  > sci-viewport.form {
     flex: auto;
 
-    ::ng-deep .form-viewport-client {
-      display: block;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+    div.viewport-client {
+      flex: auto;
       padding: .5em 1em;
+      display: flex;
+      flex-flow: column nowrap;
     }
   }
 

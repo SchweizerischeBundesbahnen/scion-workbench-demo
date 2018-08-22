@@ -25,12 +25,8 @@ $config: mat-typography-config();
     display: none;
   }
 
-  > wb-viewport {
+  > sci-viewport {
     flex: auto;
-
-    ::ng-deep .proposals-viewport-client {
-      width: 100%;
-    }
 
     .mat-list-item {
       display: flex;
