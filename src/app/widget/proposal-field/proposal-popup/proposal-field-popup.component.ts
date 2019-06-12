@@ -23,7 +23,7 @@ import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/anim
   selector: 'app-proposal-popup',
   templateUrl: './proposal-field-popup.component.html',
   styleUrls: ['./proposal-field-popup.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProposalFieldPopupComponent implements OnDestroy {
 
@@ -83,7 +83,7 @@ export class ProposalFieldPopupComponent implements OnDestroy {
           this._proposalKeys = proposals;
           proposals.forEach((proposal, index) => this._proposalKeyMap.set(proposal, index));
           this._cd.markForCheck();
-        })
+        }),
       );
   }
 
@@ -190,7 +190,7 @@ export class ProposalFieldPopupComponent implements OnDestroy {
 
     const animation = this._animationBuilder.build([
       style({height: '*'}),
-      animate('.2s ease-out', style({height: `${this.height}px`}))
+      animate('.2s ease-out', style({height: `${this.height}px`})),
     ]).create(this._host.nativeElement);
     animation.onDone(() => this.scrollSelectionIntoViewport());
     this.playOnce(animation);

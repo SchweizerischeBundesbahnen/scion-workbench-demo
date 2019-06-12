@@ -16,7 +16,7 @@ import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-filter-field',
   templateUrl: './filter-field.component.html',
-  styleUrls: ['./filter-field.component.scss']
+  styleUrls: ['./filter-field.component.scss'],
 })
 export class FilterFieldComponent implements OnDestroy {
 

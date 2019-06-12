@@ -30,7 +30,7 @@ export class PersonService implements OnDestroy {
     this._http.get<Person[]>('assets/person.data.json')
       .pipe(
         tap((persons: Person[]) => persons.forEach(person => this._store.set(person.id, person))),
-        takeUntil(this._destroy$)
+        takeUntil(this._destroy$),
       )
       .subscribe(() => {
         this._whenLoadedThen$.next();
@@ -54,7 +54,7 @@ export class PersonService implements OnDestroy {
       .pipe(
         map(() => Array.from(this._store.values())),
         map((persons: Person[]) => ids !== undefined ? persons.filter(it => ids.includes(it.id)) : persons),
-        map((persons: Person[]) => persons.sort((person1, person2) => PersonService.displayName(person1).localeCompare(PersonService.displayName(person2))))
+        map((persons: Person[]) => persons.sort((person1, person2) => PersonService.displayName(person1).localeCompare(PersonService.displayName(person2)))),
       );
   }
 
@@ -78,7 +78,7 @@ export class PersonService implements OnDestroy {
         });
       }),
       map((persons: Person[]) => persons.sort((p1, p2) => PersonService.displayName(p1).localeCompare(PersonService.displayName(p2)))),
-      map((persons: Person[]) => persons.map(it => it.id))
+      map((persons: Person[]) => persons.map(it => it.id)),
     );
   }
 
@@ -102,7 +102,7 @@ export class PersonService implements OnDestroy {
     const input: Link = {
       message: 'Person created',
       linkText: `${person.firstname} ${person.lastname}`,
-      linkCommand: ['person', person.id]
+      linkCommand: ['person', person.id],
     };
 
     this._notificationService.notify({content: LinkNotificationComponent, input});

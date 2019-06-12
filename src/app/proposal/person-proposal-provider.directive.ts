@@ -23,7 +23,7 @@ import { Person } from '../model/person.model';
   selector: 'input[appProposalField][appPersonProposalProvider]',
   providers: [
     {provide: PROPOSAL_PROVIDER, useClass: forwardRef(() => PersonProposalProviderDirective)},
-  ]
+  ],
 })
 export class PersonProposalProviderDirective implements ProposalProvider {
 

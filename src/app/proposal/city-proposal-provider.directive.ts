@@ -23,7 +23,7 @@ import { City } from '../model/city.model';
   selector: 'input[appProposalField][appCityProposalProvider]',
   providers: [
     {provide: PROPOSAL_PROVIDER, useClass: forwardRef(() => CityProposalProviderDirective)},
-  ]
+  ],
 })
 export class CityProposalProviderDirective implements ProposalProvider {
 

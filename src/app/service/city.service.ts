@@ -26,7 +26,7 @@ export class CityService implements OnDestroy {
     this._http.get<City[]>('assets/city.data.json')
       .pipe(
         tap((cities: City[]) => cities.forEach(city => this._store.set(city.id, city))),
-        takeUntil(this._destroy$)
+        takeUntil(this._destroy$),
       )
       .subscribe(() => {
         this._whenLoadedThen$.next();
@@ -53,7 +53,7 @@ export class CityService implements OnDestroy {
         });
       }),
       map((cities: City[]) => cities.sort((c1, c2) => c1.name.localeCompare(c2.name))),
-      map((cities: City[]) => cities.map(it => it.id))
+      map((cities: City[]) => cities.map(it => it.id)),
     );
   }
 

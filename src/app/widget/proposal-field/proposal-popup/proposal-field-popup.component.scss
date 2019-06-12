@@ -32,6 +32,7 @@ $config: mat-typography-config();
       display: flex;
       align-items: center;
       padding: .25em .5em;
+
       &.selected, &:hover {
         background: mat-color($background, 'hover');
       }

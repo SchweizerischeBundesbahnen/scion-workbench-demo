@@ -4,9 +4,11 @@
   mat-card {
     > mat-card-subtitle {
       display: flex;
+
       :first-child {
         flex: auto;
       }
+
       :last-child {
         flex: none;
       }

@@ -30,7 +30,7 @@ import { once } from './operators';
 @Component({
   selector: 'app-form',
   templateUrl: './app-form.component.html',
-  styleUrls: ['./app-form.component.scss']
+  styleUrls: ['./app-form.component.scss'],
 })
 export class FormComponent implements OnDestroy {
 
@@ -66,7 +66,7 @@ export class FormComponent implements OnDestroy {
         filter(() => !loading),
         filter(state => state === 'VALID'), // constant not exported by Angular (model.ts)
         takeUntil(this._destroy$),
-        filter(() => this.form.valid)
+        filter(() => this.form.valid),
       )
       .subscribe(() => {
         this.viewToModel();
@@ -88,7 +88,7 @@ export class FormComponent implements OnDestroy {
     this.form.statusChanges
       .pipe(
         takeUntil(this._destroy$),
-        debounceTime(25)
+        debounceTime(25),
       )
       .subscribe(() => this._view.dirty = this.form.dirty);
 
@@ -149,7 +149,7 @@ export class FormComponent implements OnDestroy {
       .pipe(
         takeUntil(this._destroy$),
         takeUntil(this._cancelStoreRequest$),
-        once()
+        once(),
       ).toPromise().then(() => {
         this.form.markAsPristine();
         return true;
@@ -184,8 +184,8 @@ export class FormComponent implements OnDestroy {
       actions: {
         yes: 'Yes',
         no: 'No',
-        cancel: 'Cancel'
-      }
+        cancel: 'Cancel',
+      },
     });
 
     switch (action) {

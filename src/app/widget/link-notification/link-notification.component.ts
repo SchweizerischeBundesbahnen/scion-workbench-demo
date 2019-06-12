@@ -13,7 +13,7 @@ import { Notification } from '@scion/workbench';
 
 @Component({
   selector: 'app-entity-stored-notification',
-  templateUrl: './link-notification.component.html'
+  templateUrl: './link-notification.component.html',
 })
 export class LinkNotificationComponent {
 

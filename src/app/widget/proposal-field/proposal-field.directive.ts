@@ -27,10 +27,10 @@ import { ProposalFieldPopupComponent } from './proposal-popup/proposal-field-pop
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ProposalFieldDirective),
-      multi: true
+      multi: true,
     },
-    {provide: PROPOSAL_FILTER, useFactory: (): Subject<string> => new BehaviorSubject<string>('')}
-  ]
+    {provide: PROPOSAL_FILTER, useFactory: (): Subject<string> => new BehaviorSubject<string>('')},
+  ],
 })
 // tslint:disable:member-ordering
 export class ProposalFieldDirective implements ControlValueAccessor, OnDestroy {
@@ -168,7 +168,8 @@ export class ProposalFieldDirective implements ControlValueAccessor, OnDestroy {
     const displayText$ = this._proposalProvider.displayText$(value);
     if (typeof displayText$ === 'string') {
       this._displayText = displayText$ || '';
-    } else {
+    }
+    else {
       displayText$
         .pipe(
           takeUntil(this._displayTextNotifier$),
@@ -195,14 +196,14 @@ export class ProposalFieldDirective implements ControlValueAccessor, OnDestroy {
       .flexibleConnectedTo(this.getConnectedOverlayOrigin())
       .withPositions([
         ProposalFieldDirective.SOUTH,
-        ProposalFieldDirective.NORTH
+        ProposalFieldDirective.NORTH,
       ]);
 
     const overlayRef = this._overlay.create(new OverlayConfig({
       panelClass: ['proposals'],
       width: (this.getConnectedOverlayOrigin().nativeElement as HTMLElement).offsetWidth,
       positionStrategy: positionStrategy,
-      scrollStrategy: this._overlay.scrollStrategies.reposition()
+      scrollStrategy: this._overlay.scrollStrategies.reposition(),
     }));
 
     // Prepare the popup input
@@ -218,7 +219,7 @@ export class ProposalFieldDirective implements ControlValueAccessor, OnDestroy {
     this._popup.select$
       .pipe(
         takeUntil(this._destroy$),
-        takeUntil(this._popupClose$)
+        takeUntil(this._popupClose$),
       )
       .subscribe(() => {
         this.acceptAndClose(this._popup.selection);
