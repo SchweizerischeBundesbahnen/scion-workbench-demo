@@ -22,8 +22,8 @@ before_install:
 install:
 - npm install
 script:
-- ng lint scion-workbench-demo --type-check
-- ng build scion-workbench-demo --prod --base-href "/scion-workbench-demo/"
+- ng lint
+- ng build --prod --base-href "/scion-workbench-demo/"
 deploy:
   provider: pages
   skip_cleanup: true

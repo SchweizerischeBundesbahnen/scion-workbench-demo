@@ -43,7 +43,7 @@ export class PersonComponent implements FormDataBinding, WbBeforeDestroy, OnDest
   private _askIfDirty: () => Observable<boolean> | Promise<boolean> | boolean;
   private _triggerFormChange: () => void;
 
-  @ViewChild(FormComponent)
+  @ViewChild(FormComponent, { static: true })
   public set initUxForm(form: FormComponent) {
     this._modify = this._route.snapshot.data['mode'] === FormMode.Modify;
     const formHandler = this._modify ? this.startModify() : this.startNew();

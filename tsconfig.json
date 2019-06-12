@@ -5,60 +5,27 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "module": "esnext",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "importHelpers": true,
+    "target": "es2015",
+    "noUnusedLocals": true,
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
+      "es2018",
       "dom"
     ]
     //    /*
-    //     * Path override to provide TRANSPILED workbench artifacts from project '@scion/workbench'.
-    //     * Note: DO NOT ACTIVATE FOR PRODUCTION!
-    //     */,
-    //    "paths": {
-    //      "@scion/workbench": [
-    //        "../scion-workbench/dist/scion/workbench"
-    //      ],
-    //      "@scion/workbench/*": [
-    //        "../scion-workbench/dist/scion/workbench/*"
-    //      ],
-    //      "@scion/mouse-dispatcher": [
-    //        "../scion-workbench/dist/scion/mouse-dispatcher/src/public_api"
-    //      ],
-    //      "@scion/mouse-dispatcher/*": [
-    //        "../scion-workbench/dist/scion/mouse-dispatcher/src/*"
-    //      ],
-    //      "@scion/dimension": [
-    //        "../scion-workbench/dist/scion/dimension/src/public_api"
-    //      ],
-    //      "@scion/dimension/*": [
-    //        "../scion-workbench/dist/scion/dimension/src/*"
-    //      ],
-    //      "@scion/viewport/*": [
-    //        "../scion-workbench/dist/scion/viewport/src/*"
-    //      ],
-    //      "@scion/viewport": [
-    //        "../scion-workbench/dist/scion/viewport/src/public_api"
-    //      ],
-    //      "@angular/*": [
-    //        "./node_modules/@angular/*"
-    //      ],
-    //      "rxjs": [
-    //        "./node_modules/rxjs"
-    //      ],
-    //      "rxjs/*": [
-    //        "./node_modules/rxjs/*"
-    //      ]
-    //    }
-    //    /*
-    //     * Path override to provide LIVE workbench artifacts from project '@scion/workbench'.
-    //     * Note: DO NOT ACTIVATE FOR PRODUCTION!
-    //     */,
+    //    * ======================================+
+    //    * | PATH-OVERRIDE-FOR-LOCAL-DEVELOPMENT |
+    //    * |                                     |
+    //    * |   DO NOT ACTIVATE FOR PRODUCTION!   |
+    //    * +=====================================+
+    //    */
     //    "paths": {
     //      "@scion/workbench": [
     //        "../scion-workbench/projects/scion/workbench/src/public_api"
@@ -78,11 +45,11 @@
     //      "@scion/dimension/*": [
     //        "../scion-workbench/projects/scion/dimension/src/*"
     //      ],
-    //      "@scion/viewport/*": [
-    //        "../scion-workbench/projects/scion/viewport/src/*"
-    //      ],
     //      "@scion/viewport": [
     //        "../scion-workbench/projects/scion/viewport/src/public_api"
+    //      ],
+    //      "@scion/viewport/*": [
+    //        "../scion-workbench/projects/scion/viewport/src/*"
     //      ],
     //      "@angular/*": [
     //        "./node_modules/@angular/*"
@@ -93,6 +60,6 @@
     //      "rxjs/*": [
     //        "./node_modules/rxjs/*"
     //      ]
-    //    }
+    //  }
   }
 }
