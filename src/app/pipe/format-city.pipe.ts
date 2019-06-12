@@ -10,8 +10,8 @@
 
 import { Pipe, PipeTransform } from '@angular/core';
 import { CityService } from '../service/city.service';
-import { Observable } from 'rxjs/index';
-import { map } from 'rxjs/internal/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 /**
  * Resolves to the display text of a city.
@@ -23,7 +23,7 @@ import { map } from 'rxjs/internal/operators';
  */
 @Pipe({
   name: 'appFormatCity$',
-  pure: true
+  pure: true,
 })
 export class FormatCityPipe implements PipeTransform {
 

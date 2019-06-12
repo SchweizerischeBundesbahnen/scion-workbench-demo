@@ -9,7 +9,7 @@
  */
 
 import { Pipe, PipeTransform } from '@angular/core';
-import { Observable } from 'rxjs/index';
+import { Observable } from 'rxjs';
 import { PersonService } from '../service/person.service';
 import { Person } from '../model/person.model';
 
@@ -24,7 +24,7 @@ import { Person } from '../model/person.model';
  */
 @Pipe({
   name: 'appResolvePerson$',
-  pure: true
+  pure: true,
 })
 export class PersonResolvePipe implements PipeTransform {
 
@@ -34,7 +34,8 @@ export class PersonResolvePipe implements PipeTransform {
   public transform(id: number | number[]): Observable<Person | Person[]> {
     if (Array.isArray(id)) {
       return this._personService.persons$(id);
-    } else {
+    }
+    else {
       return this._personService.person$(id);
     }
   }

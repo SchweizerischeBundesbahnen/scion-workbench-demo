@@ -8,7 +8,7 @@
  *  SPDX-License-Identifier: EPL-2.0
  */
 
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Host, HostBinding, Inject, OnDestroy, Optional, QueryList, TemplateRef, TrackByFunction, ViewChild, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Host, HostBinding, Inject, OnDestroy, Optional, QueryList, TrackByFunction, ViewChild, ViewChildren } from '@angular/core';
 import { merge, Observable, of, Subject } from 'rxjs';
 import { PROPOSAL_FILTER, PROPOSAL_PROVIDER, PROPOSAL_SELECTION, ProposalKey } from '../proposal-field.constants';
 import { first, map, switchMap, tap } from 'rxjs/operators';
@@ -44,11 +44,8 @@ export class ProposalFieldPopupComponent implements OnDestroy {
   @ViewChildren(MatListItem, {read: ElementRef})
   public proposalListItems: QueryList<ElementRef>;
 
-  @ViewChild(SciViewportComponent)
+  @ViewChild(SciViewportComponent, {static: true})
   public viewport: SciViewportComponent;
-
-  @ViewChild('default_proposal_template')
-  public defaultProposalTemplate: TemplateRef<ProposalKey>;
 
   @HostBinding('class.empty')
   public get emtpy(): boolean {

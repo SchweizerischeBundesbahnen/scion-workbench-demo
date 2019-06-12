@@ -21,7 +21,7 @@ export class FriendListCardComponent {
 
   public friendAddInputControl = new FormControl();
 
-  @ViewChild('friend_add_input')
+  @ViewChild('friend_add_input', { static: true })
   public friendAddInputElement: ElementRef<HTMLInputElement>;
 
   @Input()

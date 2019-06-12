@@ -10,15 +10,14 @@
 
 import { Component, TrackByFunction } from '@angular/core';
 import { PersonService } from '../service/person.service';
-import { BehaviorSubject, Observable } from 'rxjs/index';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Person } from '../model/person.model';
-import { map } from 'rxjs/operators';
-import { switchMap } from 'rxjs/internal/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-person-list',
   templateUrl: './person-list.component.html',
-  styleUrls: ['./person-list.component.scss']
+  styleUrls: ['./person-list.component.scss'],
 })
 export class PersonListComponent {
 
@@ -27,7 +26,7 @@ export class PersonListComponent {
 
   constructor(personService: PersonService) {
     this.persons$ = this._filter$.pipe(
-      switchMap((filter: string) => personService.persons$().pipe(map(persons => persons.filter(it => this.accept(it, filter)))))
+      switchMap((filter: string) => personService.persons$().pipe(map(persons => persons.filter(it => this.accept(it, filter))))),
     );
   }
 
