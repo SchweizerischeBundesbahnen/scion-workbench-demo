@@ -1,0 +1,16 @@
+<agm-map [fitBounds]="true">
+  <agm-marker *ngIf="personEntry"
+              [agmFitBounds]="true"
+              [latitude]="personEntry.city.latitude"
+              [longitude]="personEntry.city.longitude"
+              [label]="personEntry.person.firstname + ' ' + personEntry.person.lastname">
+  </agm-marker>
+
+  <agm-marker *ngFor="let friendEntry of friendEntries"
+              [agmFitBounds]="true"
+              [latitude]="friendEntry.city.latitude"
+              [longitude]="friendEntry.city.longitude"
+              [label]="friendEntry.person.firstname + ' ' + friendEntry.person.lastname"
+              (markerClick)="onFriendClick(friendEntry.person)">
+  </agm-marker>
+</agm-map>

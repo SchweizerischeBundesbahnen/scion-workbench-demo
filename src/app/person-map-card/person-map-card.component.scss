@@ -7,6 +7,10 @@
   mat-card {
     > mat-card-content {
       height: 300px;
+
+      > agm-map {
+        height: 100%;
+      }
     }
 
     > button.open-map {

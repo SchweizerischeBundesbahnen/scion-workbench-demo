@@ -29,12 +29,12 @@ import { PersonMapCardComponent } from './person-map-card/person-map-card.compon
 import { FormatCityPipe } from './pipe/format-city.pipe';
 import { PersonResolvePipe } from './pipe/person-resolve.pipe';
 import { PersonListComponent } from './person-list/person-list.component';
-import { HeatmapComponent } from './heatmap/heatmap.component';
 import { CityService } from './service/city.service';
 import { PersonService } from './service/person.service';
 import { WidgetModule } from './widget/widget.module';
 import { AppRoutingModule } from './app-routing.module';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,6 @@ import { OverlayModule } from '@angular/cdk/overlay';
     FormatCityPipe,
     PersonResolvePipe,
     PersonProposalProviderDirective,
-    HeatmapComponent,
   ],
   imports: [
     CommonModule,
@@ -70,6 +69,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
     MatCardModule,
     MatButtonModule,
     OverlayModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDY8vv473uSuQyxwFRTs6zTORVaXysyMx8',
+    }),
   ],
   providers: [
     PersonService,
@@ -77,7 +79,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
   ],
   bootstrap: [
     AppComponent,
-  ]
+  ],
 })
 export class AppModule {
 }
