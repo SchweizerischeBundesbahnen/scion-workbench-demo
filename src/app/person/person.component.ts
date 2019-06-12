@@ -25,7 +25,7 @@ import { FormMode } from '../widget/form/form-mode';
 @Component({
   selector: 'app-person',
   templateUrl: './person.component.html',
-  styleUrls: ['./person.component.scss']
+  styleUrls: ['./person.component.scss'],
 })
 export class PersonComponent implements FormDataBinding, WbBeforeDestroy, OnDestroy {
 
@@ -43,7 +43,7 @@ export class PersonComponent implements FormDataBinding, WbBeforeDestroy, OnDest
   private _askIfDirty: () => Observable<boolean> | Promise<boolean> | boolean;
   private _triggerFormChange: () => void;
 
-  @ViewChild(FormComponent, { static: true })
+  @ViewChild(FormComponent, {static: true})
   public set initUxForm(form: FormComponent) {
     this._modify = this._route.snapshot.data['mode'] === FormMode.Modify;
     const formHandler = this._modify ? this.startModify() : this.startNew();
@@ -110,7 +110,7 @@ export class PersonComponent implements FormDataBinding, WbBeforeDestroy, OnDest
       },
       store$: (): Observable<void> => {
         return this._personService.create$(this.person);
-      }
+      },
     };
   }
 
@@ -128,7 +128,7 @@ export class PersonComponent implements FormDataBinding, WbBeforeDestroy, OnDest
       },
       store$: (): Observable<void> => {
         return this._personService.store$(this.person);
-      }
+      },
     };
   }
 

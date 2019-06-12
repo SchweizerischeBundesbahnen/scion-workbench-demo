@@ -27,9 +27,11 @@
       outline: 0;
       box-shadow: 0 0 8px 0 mat-color($primary, .35);
     }
+
     &:not(:first-child) {
       margin-left: .2em;
     }
+
     &:not(:last-child) {
       margin-right: .2em;
     }

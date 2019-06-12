@@ -15,13 +15,13 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-friend-list-card',
   templateUrl: './friend-list-card.component.html',
-  styleUrls: ['./friend-list-card.component.scss']
+  styleUrls: ['./friend-list-card.component.scss'],
 })
 export class FriendListCardComponent {
 
   public friendAddInputControl = new FormControl();
 
-  @ViewChild('friend_add_input', { static: true })
+  @ViewChild('friend_add_input', {static: true})
   public friendAddInputElement: ElementRef<HTMLInputElement>;
 
   @Input()
