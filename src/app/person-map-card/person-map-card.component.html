@@ -1,10 +1,10 @@
 <mat-card>
   <mat-card-content>
-    <agm-map [zoom]="13"
+    <agm-map *ngIf="city"
+             [zoom]="13"
              [latitude]="city.latitude"
              [longitude]="city.longitude">
-      <agm-marker *ngIf="city"
-                  [latitude]="city.latitude"
+      <agm-marker [latitude]="city.latitude"
                   [longitude]="city.longitude"
                   [label]="person.firstname + ' ' + person.lastname">
       </agm-marker>
