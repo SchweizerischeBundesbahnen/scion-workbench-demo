@@ -49,7 +49,7 @@ export class PersonMapComponent implements OnDestroy {
         switchMap((person: Person) => this.loadCity$(person)), // load the city of the person
         tap(entry => this.personEntry = entry),
         switchMap(({person}) => person.friends.length ? personService.persons$(person.friends) : of([])), // load the friends
-        switchMap((friends: Person[]): Observable<PersonCityEntry[]> => combineLatest(...friends.map(it => this.loadCity$(it)))), // load the cities of the friends
+        switchMap((friends: Person[]): Observable<PersonCityEntry[]> => combineLatest([...friends.map(it => this.loadCity$(it))])), // load the cities of the friends
         takeUntil(this._destroy$),
       )
       .subscribe((entries: PersonCityEntry[]) => {

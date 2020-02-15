@@ -14,7 +14,7 @@ import { PROPOSAL_FILTER, PROPOSAL_PROVIDER, PROPOSAL_SELECTION, ProposalKey } f
 import { first, map, switchMap, tap } from 'rxjs/operators';
 import { SciDimension } from '@scion/dimension';
 import { SciViewportComponent } from '@scion/viewport';
-import { MatListItem } from '@angular/material';
+import { MatListItem } from '@angular/material/list';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ProposalProvider } from '../proposal-provider';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';

@@ -10,12 +10,12 @@
 
 import { Directive, ElementRef, forwardRef, Host, HostListener, Inject, Injector, Input, OnDestroy, Optional } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MAT_INPUT_VALUE_ACCESSOR, MatFormField } from '@angular/material';
+import { MatFormField } from '@angular/material/form-field';
+import { MAT_INPUT_VALUE_ACCESSOR } from '@angular/material/input';
 import { BehaviorSubject, merge, noop, Subject } from 'rxjs';
-import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
+import { ConnectedPosition, Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { first, take, takeUntil } from 'rxjs/operators';
-import { ConnectedPosition } from '@angular/cdk/overlay/typings/position/flexible-connected-position-strategy';
 import { PROPOSAL_FILTER, PROPOSAL_PROVIDER, PROPOSAL_SELECTION, ProposalKey } from './proposal-field.constants';
 import { ProposalProvider } from './proposal-provider';
 import { ProposalFieldPopupComponent } from './proposal-popup/proposal-field-popup.component';
@@ -168,8 +168,7 @@ export class ProposalFieldDirective implements ControlValueAccessor, OnDestroy {
     const displayText$ = this._proposalProvider.displayText$(value);
     if (typeof displayText$ === 'string') {
       this._displayText = displayText$ || '';
-    }
-    else {
+    } else {
       displayText$
         .pipe(
           takeUntil(this._displayTextNotifier$),
