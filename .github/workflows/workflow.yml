@@ -1,0 +1,79 @@
+name: Continuous Integration and Delivery
+on:
+  push:
+  workflow_dispatch:
+env:
+  NODE_VERSION: 16.16.0
+jobs:
+  install:
+    name: 'Installing NPM modules'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: 'Running npm ci (if node_modules not cached)'
+        uses: actions/cache@v2
+        id: node-modules-cache
+        with:
+          path: ./node_modules
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - if: steps.node-modules-cache.outputs.cache-hit != 'true'
+        run: npm ci
+  lint:
+    name: 'Linting'
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: 'Restoring NPM modules from cache'
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - run: npm run lint
+  build:
+    name: 'Building'
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: 'Restoring NPM modules from cache'
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: 'Building'
+        run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: scion-workbench-demo
+          path: dist/scion-workbench-demo
+  deploy:
+    name: 'Deploying App to GitHub Pages'
+    if: github.ref == 'refs/heads/master'
+    needs:
+      - build
+      - lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Downloading App'
+        uses: actions/download-artifact@v2
+        with:
+          name: scion-workbench-demo
+          path: dist/scion-workbench-demo
+      - name: 'Deploying App to GitHub Pages'
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          commit-message: 'chore: deploy demo app'
+          folder: dist/scion-workbench-demo
+          clean: true
