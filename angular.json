@@ -49,6 +49,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "baseHref": "/scion-workbench-demo/",
               "budgets": [
                 {
                   "type": "initial",
